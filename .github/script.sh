@@ -3,6 +3,7 @@ chmod 400 key
 SSH_OPTIONS='-o StrictHostKeyChecking=no'
 # mkdir -p ~/.ssh
 # ssh-keyscan -H 18.192.4.4 > ~/.ssh/known_hosts
+cat $TEST
 sed -i "s/latest-tagged-version/$GITHUB_RUN_NUMBER/g" docker-compose.yaml
 cat docker-compose.yaml
 scp -i key $SSH_OPTIONS docker-compose.yaml ubuntu@18.192.4.4:/home/ubuntu

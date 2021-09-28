@@ -21,6 +21,7 @@ jobs:
         shell: bash
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+          TEST: test
         run: |
           chmod +x .github/script.sh
           .github/script.sh
