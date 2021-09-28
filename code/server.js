@@ -5,12 +5,12 @@ var bodyParser = require('body-parser');
 
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
-var routes = require('./router/router');
+// var routes = require('./router/router');
 
-app.use('/', routes);
+// app.use('/', routes);
 
 
 // const jobs = require("./router/router")
