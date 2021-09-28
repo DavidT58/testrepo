@@ -12,11 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
+      
+      - name: Docker build
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          docker build ./ -t ghcr.io/davidt58/test:${{ env.GITHUB_RUN_NUMBER }}
+          docker push ghcr.io/davidt58/test:${{ env.GITHUB_RUN_NUMBER }}
