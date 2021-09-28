@@ -15,5 +15,5 @@ jobs:
       
       - name: Docker build
         run: |
-          docker build ./ -t ghcr.io/davidt58/test:${{ env.GITHUB_RUN_NUMBER }}
-          docker push ghcr.io/davidt58/test:${{ env.GITHUB_RUN_NUMBER }}
+          docker build ./ -t ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
+          docker push ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
