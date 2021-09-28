@@ -12,10 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Docker build
         run: |
-          echo $ACCESS_TOKEN | docker login -u davidt58 --password-stdin
-          docker build ./ -t ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
+          echo ${{ secrets.ACCESS_TOKEN }} | docker login -u davidt58 --password-stdin
+          docker build . -t ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
           docker push ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
