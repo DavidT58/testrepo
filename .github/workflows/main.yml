@@ -19,9 +19,10 @@ jobs:
           docker push ghcr.io/davidt58/test:$GITHUB_RUN_NUMBER
       - name: Deploy image to ec2
         shell: bash
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          TEST: test
         run: |
-          chmod +x .github/script.sh
-          .github/script.sh
+          mkdir .ssh
+          echo ${{ secrets.SSH_KEY }} > .ssh/id_rsa
+          chmod 400 ssh/id_rsa
+          sed -i "s/latest-tagged-version/$GITHUB_RUN_NUMBER/g" docker-compose.yaml
+          scp -i key $SSH_OPTIONS docker-compose.yaml ubuntu@{{ secrets.SERVER_IP }}:/home/ubuntu
+          DOCKER_HOST="ssh://ubuntu@{{ secrets.SERVER_IP }}" docker-compose up -d
