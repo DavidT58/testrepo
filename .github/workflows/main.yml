@@ -26,7 +26,9 @@ jobs:
         
       - name: Deploy image to ec2
         shell: bash
+        env:
+          HOST: {{ secrets.SERVER_IP }}
         run: |
           sed -i "s/latest-tagged-version/$GITHUB_RUN_NUMBER/g" docker-compose.yaml
-          scp docker-compose.yaml ubuntu@{{ secrets.SERVER_IP }}:/home/ubuntu
-          DOCKER_HOST="ssh://ubuntu@{{ secrets.SERVER_IP }}" docker-compose up -d
+          scp docker-compose.yaml ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu
+          DOCKER_HOST="ssh://ubuntu@${{ secrets.SERVER_IP }}" docker-compose up -d
