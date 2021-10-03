@@ -17,7 +17,7 @@ const app = express();
 
 
 app.use(express.json({ extended: false }));
-app.get("/", (req, res) => res.send("Server up and running"));
+app.get("/", (req, res) => res.send("lolol"));
 
 // app.use("/api/jobs", jobs);
 

@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
 
-  application:
+  backend:
     # build:
     #   context: ./
     image: ghcr.io/davidt58/test:latest-tagged-version
@@ -10,5 +10,5 @@ services:
       - 8080:8080
     environment:
       - "PORT=8080"
-    container_name: application
+    container_name: backend
 
