@@ -44,6 +44,6 @@ jobs:
           echo "Docker host: ${{ env.DOCKER_HOST }}"
           echo ${{ secrets.ACCESS_TOKEN }} | docker login ghcr.io -u davidt58 --password-stdin
           scp docker-compose.yaml ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu
-          docker-compose stop backend
-          docker-compose rm backend
+          docker kill backend
+          docker rm backend
           docker-compose up -d
