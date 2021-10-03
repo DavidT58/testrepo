@@ -3,7 +3,7 @@ services:
 
   backend:
     container_name: backend
-    image: ghcr.io/davidt58/test:latest-tagged-image
+    image: ghcr.io/davidt58/test:latest-tagged-version
     networks:
       - nginx
 
